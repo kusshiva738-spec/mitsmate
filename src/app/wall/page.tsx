@@ -163,6 +163,10 @@ export default function WallPage() {
   }
 
   async function deletePost(postId: string) {
+    // Hard ownership check — never delete if post doesn't belong to current user
+    const post = posts.find((p) => p.id === postId);
+    if (!post || post.user_id !== userId) return;
+
     if (!confirm("Delete this post?")) return;
 
     // Optimistic remove
@@ -249,6 +253,10 @@ export default function WallPage() {
   }
 
   async function deleteReply(replyId: string) {
+    // Hard ownership check — never delete if reply doesn't belong to current user
+    const reply = replies.find((r) => r.id === replyId);
+    if (!reply || reply.user_id !== userId) return;
+
     // Optimistic remove
     setReplies((prev) => prev.filter((r) => r.id !== replyId));
 

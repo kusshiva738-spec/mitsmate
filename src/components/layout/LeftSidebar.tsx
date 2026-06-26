@@ -14,11 +14,11 @@ export default function LeftSidebar() {
     { name: "Groups", icon: "📚", href: "/groups" },
     { name: "Chats", icon: "💬", href: "/chats" },
     { name: "Profile", icon: "👤", href: "/profile" },
-    { name: "About Us", icon: "", href: "/about" },
+    { name: "About Us", icon: "✨", href: "/about" },
   ];
 
   return (
-    <aside className="w-64 border-r border-white/10 bg-[#0b0b0f] p-4">
+    <aside  className="w-64 border-r border-white/10 bg-[#0b0b0f] p-4">
       <h1 className="text-xl font-bold text-white mb-6">
         MITS-Mate
       </h1>

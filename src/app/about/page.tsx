@@ -192,7 +192,7 @@ export default function AboutPage() {
             <div className="bg-white/5 border border-white/10 rounded-[24px] p-4">
 
               <Image
-                src="/qr.jpg"
+                src="/qr1.jpeg"
                 alt="Donation QR"
                 width={220}
                 height={220}
