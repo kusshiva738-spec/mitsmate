@@ -393,28 +393,46 @@ export default function ProfilePage() {
                     placeholder="Full Name"
                     className="w-full p-3 rounded bg-black/30 text-white"
                   />
+                   <select
+              value={branch}
+              onChange={(e) =>
+                setBranch(e.target.value)
+              }
+              aria-placeholder="branch"
+              className="w-full p-3 rounded bg-black/30 text-white"
+            >
+              <option>CSE</option>
+              <option>IT</option>
+              <option>CSD</option>
+               <option>CIVIL ENG.</option>
+                <option>MECH.ENG.</option>
+                <option>Electrical ENG. </option>
+                 <option>ELECTRONICS ENG. </option>
+                  <option>ELECTRONICS & TELECOM. </option>
+                  <option>CHEMICAL ENG. </option>
+                   <option>IOT(IT) </option>
+                    <option>AI&ML </option>
+                     <option>IOT(EE) </option>
+                      <option>AIDS</option>
+                       <option>MATHEMATICS &COMP. </option>
+                        <option>AUTOMOBILE </option>
+                         <option>ARCHITECTURE </option>
+            </select>
 
-                  <input
-                    value={branch}
-                    onChange={(e) =>
-                      setBranch(
-                        e.target.value
-                      )
-                    }
-                    placeholder="Branch"
-                    className="w-full p-3 rounded bg-black/30 text-white"
-                  />
+                 
+                            <select
+                      value={year}
+                      onChange={(e) => setYear(e.target.value)}
+                      className="w-full p-3 rounded bg-black/30 text-white"
+                    >
+                      
+                      <option value="1">1st Year</option>
+                      <option value="2">2nd Year</option>
+                      <option value="3">3rd Year</option>
+                      <option value="4">4th Year</option>
+                    </select>
 
-                  <input
-                    value={year}
-                    onChange={(e) =>
-                      setYear(
-                        e.target.value
-                      )
-                    }
-                    placeholder="Year"
-                    className="w-full p-3 rounded bg-black/30 text-white"
-                  />
+                 
 
                   <input
                     value={gender}

@@ -108,23 +108,40 @@ export default function SetupPage() {
             }
             className="w-full bg-[#241b3d] rounded-2xl px-5 py-4 outline-none"
           />
+           <select
+              value={branch}
+              onChange={(e) =>
+                setBranch(e.target.value)
+              }
+              aria-placeholder="branch"
+              className="w-full p-3 rounded bg-black/30 text-white"
+            >
+              <option>CSE</option>
+              <option>IT</option>
+              <option>CSD</option>
+               <option>CIVIL ENG.</option>
+                <option>MECH.ENG.</option>
+                <option>Electrical ENG. </option>
+                 <option>ELECTRONICS ENG. </option>
+                  <option>ELECTRONICS & TELECOM. </option>
+                  <option>CHEMICAL ENG. </option>
+                   <option>IOT(IT) </option>
+                    <option>AI&ML </option>
+                     <option>IOT(EE) </option>
+                      <option>AIDS</option>
+                       <option>MATHEMATICS &COMP. </option>
+                        <option>AUTOMOBILE </option>
+                         <option>ARCHITECTURE </option>
+            </select>
 
-          <input
-            placeholder="Branch"
-            value={branch}
-            maxLength={20}
-            onChange={(e) =>
-              setBranch(e.target.value)
-            }
-            className="w-full bg-[#241b3d] rounded-2xl px-5 py-4 outline-none"
-          />
+         
 
          <select
   value={year}
   onChange={(e) => setYear(e.target.value)}
   className="w-full bg-[#241b3d] rounded-2xl px-5 py-4 outline-none"
 >
-  <option value="">Select Year</option>
+  
   <option value="1">1st Year</option>
   <option value="2">2nd Year</option>
   <option value="3">3rd Year</option>

@@ -76,7 +76,7 @@ export default function AuthPage() {
         <div className="mt-8">
           <input
             type="email"
-            placeholder="Email"
+            placeholder="MITS College student Email"
             value={email}
             onChange={(e) =>
               setEmail(e.target.value)
