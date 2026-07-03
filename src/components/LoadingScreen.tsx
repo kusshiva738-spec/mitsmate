@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const messages = [
   "Loading your world…",
@@ -54,7 +55,13 @@ export default function LoadingScreen() {
 
           {/* Inner circle */}
           <div className="relative z-10 w-[88px] h-[88px] rounded-full bg-gradient-to-br from-[#1e1a3f] to-[#2d1f5e] flex items-center justify-center shadow-[0_0_30px_rgba(124,58,237,0.4)] animate-pulse">
-            <span className="text-4xl animate-bounce">☕</span>
+                      <Image
+            src="/logo.png"
+            alt="MITS Mate"
+            width={90}
+            height={90}
+            className="rounded-full  shadow-lg"
+          />
           </div>
         </div>
 

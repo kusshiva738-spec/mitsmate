@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function LeftSidebar() {
   const pathname = usePathname();
@@ -19,8 +20,14 @@ export default function LeftSidebar() {
 
   return (
     <aside  className="w-64 border-r border-white/10 bg-[#0b0b0f] p-4">
-      <h1 className="text-xl font-bold text-white mb-6">
-        MITS-Mate
+      <h1 className="text-xl font-bold text-white mb-5">
+        <Image
+  src="/logo.png"
+  alt="MITS Mate"
+  width={120}
+  height={80}
+  className="rounded-full"
+/>
       </h1>
 
       <nav className="space-y-2">

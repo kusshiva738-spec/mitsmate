@@ -45,8 +45,15 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center">
-      Loading...
-    </div>
+     <div className="flex items-center justify-center py-20">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 rounded-full border-2 border-transparent animate-spin"
+              style={{ borderTopColor: "#a78bfa", borderRightColor: "#ec4899" }} />
+            <p className="text-sm font-semibold"
+              style={{ background: "linear-gradient(90deg,#a78bfa,#ec4899,#fb923c)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              Loading...
+            </p>
+          </div>
+        </div>
   );
 }

@@ -21,6 +21,13 @@ export default function AboutPage() {
           <div className="inline-block px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs text-orange-300">
             Built By Students • For Students
           </div>
+           <Image
+            src="/logo.png"
+            alt="MITS Mate"
+            width={120}
+            height={80}
+            className="max-w-4xl mx-auto px-2 py-2 rounded-full"
+          />
 
           <h1 className="mt-6 text-4xl md:text-6xl font-bold">
             About
@@ -215,6 +222,11 @@ export default function AboutPage() {
 
           <p className="text-gray-200 text-sm item-center text-center">
             Designed & Developed by MITSian
+                    
+          </p>
+           <p className="text-gray-400 text-sm item-center text-center">
+            contact us📧 : mitsmate@gmail.com
+                    
           </p>
 
           <p className="text-gray-600 text-xs mt-2">
