@@ -41,11 +41,20 @@ export default function AuthPage() {
 
     } else {
 
-      const { error } =
-        await supabase.auth.signUp({
-          email,
-          password,
-        });
+     // Allow only MITS email
+const collegeEmail = email.trim().toLowerCase();
+
+if (!collegeEmail.endsWith("@mitsgwl.ac.in")) {
+  alert("Only MITS students can register using their official MITS email.");
+  setLoading(false);
+  return;
+}
+
+const { error } =
+  await supabase.auth.signUp({
+    email: collegeEmail,
+    password,
+  });
 
       if (error) {
         alert(error.message);
