@@ -12,7 +12,7 @@ export default function SetupPage() {
     useState("");
 
   const [branch, setBranch] =
-    useState("");
+    useState("CSE");
 
   const [year, setYear] =
     useState("");
@@ -114,7 +114,7 @@ export default function SetupPage() {
                 setBranch(e.target.value)
               }
               aria-placeholder="branch"
-              className="w-full p-3 rounded bg-black/30 text-white"
+              className="w-full bg-[#241b3d] rounded-2xl px-5 py-4 outline-none"
             >
               <option>CSE</option>
               <option>IT</option>

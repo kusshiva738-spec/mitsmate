@@ -5,7 +5,7 @@ export default function MobileBottomNav() {
 
   return (
 
-    <div className="fixed bottom-0 left-0 w-full bg-[#120d25] border-t border-white/10 flex justify-around py-4 xl:hidden z-50">
+    <div className="fixed bottom-0 left-0 w-full bg-[#120d25] border-t border-white/10 flex justify-around py-3 xl:hidden z-50">
 
       <button className="text-white text-2xl">
          <Link
@@ -49,6 +49,15 @@ export default function MobileBottomNav() {
                   className="text-orange-400 hover:text-orange-300"
                 >
                   🔥
+              
+                </Link>
+      </button>
+      <button className="text-white text-2xl">
+         <Link
+                  href="/event"
+                  className="text-orange-400 hover:text-orange-300"
+                >
+                  🎊
               
                 </Link>
       </button>

@@ -12,6 +12,7 @@ export default function LeftSidebar() {
     { name: "MITS Wall", icon: "🔥", href: "/wall" },
     { name: "Open For Chai", icon: "🫖", href: "/chai" },
     { name: "Discover", icon: "👥", href: "/discover" },
+     { name: "Events", icon: "🎊", href: "/event" },
     { name: "Groups", icon: "📚", href: "/groups" },
     { name: "Chats", icon: "💬", href: "/chats" },
     { name: "Profile", icon: "👤", href: "/profile" },
