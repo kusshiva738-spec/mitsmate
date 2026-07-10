@@ -486,15 +486,17 @@ function EventModal({ event: ev, onClose }: { event: Event; onClose: () => void 
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center bg-black/80 backdrop-blur-md px-0 sm:px-4"
+      className="fixed inset-0 z-[9999]  sm:items-center justify-center bg-black/80  px-0 sm:px-2"
       onClick={onClose}
     >
+       {/* Scrollable body */}
+        <div className="flex-1 overflow-y-auto px-5 "></div>
       <div
         onClick={e => e.stopPropagation()}
-        className="w-full sm:max-w-lg max-h-[92vh] flex flex-col rounded-t-3xl sm:rounded-3xl border border-white/10 bg-[#130f22] shadow-2xl overflow-hidden animate-[slideUp_0.25s_ease-out]"
+        className="w-full sm:max-w-lg max-h-full flex flex-col rounded-t-3xl sm:rounded-3xl border border-white/10 bg-[#130f22] shadow-2xl overflow-hidden animate-[slideUp_0.25s_ease-out]"
       >
         {/* Poster / header */}
-        <div className="relative h-52 flex-shrink-0 bg-black/30">
+        <div className="relative h-full flex-shrink-0 bg-black/30">
           {ev.poster_url ? (
             <img src={ev.poster_url} alt={ev.title} className="w-full h-full object-cover" />
           ) : (
