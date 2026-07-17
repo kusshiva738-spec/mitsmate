@@ -140,6 +140,10 @@ function ChaiChatPanel({
           <div>
             <p className="text-white font-semibold text-sm">{buddyName}</p>
             <p className="text-amber-300 text-xs">Decide where to meet ☕</p>
+             <p className="text-gray-400 text-xs">
+              
+                Note: Chats are not encrypted.
+              </p>
           </div>
         </div>
         <button onClick={onClose} className="text-slate-400 hover:text-white text-lg leading-none transition-colors">✕</button>

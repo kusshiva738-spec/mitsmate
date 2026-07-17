@@ -62,7 +62,7 @@ export default function ChatPage() {
       } = await supabase.auth.getUser();
 
       if (!user) {
-        router.push("/login");
+        router.push("/auth");
         return;
       }
 
@@ -301,7 +301,8 @@ const chatClosed =
               </h2>
 
               <p className="text-gray-400 text-sm">
-                {messagesUsed}/50 messages used
+                {messagesUsed}/50 messages used,<br></br>
+                Note: Chats are not encrypted. keep it friendly and casual! (Developer can see the database)
               </p>
             </div>
 

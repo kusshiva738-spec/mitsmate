@@ -59,7 +59,7 @@ const { error } =
       if (error) {
         alert(error.message);
       } else {
-        alert("Account created");
+        alert("Account created, confirmation link sent to your mail");
         setIsLogin(true);
       }
     }

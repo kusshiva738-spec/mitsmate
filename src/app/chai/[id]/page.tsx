@@ -200,10 +200,10 @@ export default function ChaiChatPage() {
     setMessage("");
 
     // ----------------------------
-    // Auto End At 20 Messages
+    // Auto End At 50 Messages
     // ----------------------------
 
-    if (totalMessages >= 20) {
+    if (totalMessages >= 50) {
 
       await supabase
         .from("chai_messages")
