@@ -215,6 +215,7 @@ export default function GroupsPage() {
               <option>official club of MITS</option>
                <option>Entertainment</option>
                 <option>Research</option>
+                 <option>Others</option>
             </select>
 
             <input
