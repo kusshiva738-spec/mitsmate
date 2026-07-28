@@ -224,7 +224,7 @@ export default function FeedPage() {
 
                         {/* Status badge */}
                         <span className={`mt-3 inline-block text-[10px] font-semibold px-3 py-1 rounded-full ${isUpForChai ? "bg-violet-500/20 text-violet-300 border border-violet-500/30" : "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"}`}>
-                          {isUpForChai ? "☕ Up for Chai" : "🟢 Open now"}
+                          {isUpForChai ? "☕ Up for Chai" : "🟢 Open for friendship"}
                         </span>
 
                         <Link
