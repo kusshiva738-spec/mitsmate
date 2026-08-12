@@ -45,110 +45,6 @@ const features = [
   },
 ];
 
-/* =================================================================== */
-/* TYPEWRITER HELPERS                                                   */
-/* =================================================================== */
-
-// Types a single string out once, character by character.
-// `start` gates when typing begins so pieces can be chained in sequence.
-function useTypewriter(text, { speed = 45, start = true, onDone } = {}) {
-  const [displayed, setDisplayed] = useState("");
-  const [done, setDone] = useState(false);
-
-  useEffect(() => {
-    if (!start) {
-      setDisplayed("");
-      setDone(false);
-      return;
-    }
-
-    let i = 0;
-    setDisplayed("");
-    setDone(false);
-
-    const interval = setInterval(() => {
-      i += 1;
-      setDisplayed(text.slice(0, i));
-
-      if (i >= text.length) {
-        clearInterval(interval);
-        setDone(true);
-        if (onDone) onDone();
-      }
-    }, speed);
-
-    return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [text, start]);
-
-  return { displayed, done };
-}
-
-function Cursor({ show, className = "bg-white/80" }) {
-  if (!show) return null;
-  return (
-    <span
-      className={`inline-block w-[2px] h-[1em] translate-y-[2px] ml-0.5 animate-pulse ${className}`}
-    />
-  );
-}
-
-// Self-contained type -> pause -> delete -> next-word loop.
-// Replaces the old fade in/out rotation, which relied on an
-// onAnimationComplete callback firing on a hidden element to
-// bump the index — fragile and easy to desync from what was
-// actually on screen.
-function RotatingTagline({
-  words,
-  start = true,
-  typingSpeed = 55,
-  deletingSpeed = 28,
-  pauseTime = 1600,
-}) {
-  const [wordIndex, setWordIndex] = useState(0);
-  const [text, setText] = useState("");
-  const [phase, setPhase] = useState("typing"); // typing | pausing | deleting
-
-  useEffect(() => {
-    if (!start) return undefined;
-
-    const current = words[wordIndex];
-    let timeout;
-
-    if (phase === "typing") {
-      if (text.length < current.length) {
-        timeout = setTimeout(() => {
-          setText(current.slice(0, text.length + 1));
-        }, typingSpeed);
-      } else {
-        timeout = setTimeout(() => setPhase("pausing"), pauseTime);
-      }
-    } else if (phase === "pausing") {
-      timeout = setTimeout(() => setPhase("deleting"), 200);
-    } else if (phase === "deleting") {
-      if (text.length > 0) {
-        timeout = setTimeout(() => {
-          setText(current.slice(0, text.length - 1));
-        }, deletingSpeed);
-      } else {
-        setWordIndex((prev) => (prev + 1) % words.length);
-        setPhase("typing");
-      }
-    }
-
-    return () => clearTimeout(timeout);
-  }, [text, phase, wordIndex, words, start, typingSpeed, deletingSpeed, pauseTime]);
-
-  return (
-    <>
-      ✦ {text}
-      <Cursor show={start} />
-    </>
-  );
-}
-
-/* =================================================================== */
-
 export default function AuthPage() {
   const router = useRouter();
 
@@ -156,45 +52,7 @@ export default function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
-  // Sequencing flags: label -> line1 -> line2 -> line3 -> (tagline + description)
-  const [line1Start, setLine1Start] = useState(false);
-  const [line2Start, setLine2Start] = useState(false);
-  const [line3Start, setLine3Start] = useState(false);
-  const [taglineStart, setTaglineStart] = useState(false);
-  const [descStart, setDescStart] = useState(false);
-
-  const label = useTypewriter("Welcome to your campus", {
-    speed: 38,
-    start: true,
-    onDone: () => setLine1Start(true),
-  });
-
-  const line1 = useTypewriter("Your campus.", {
-    speed: 55,
-    start: line1Start,
-    onDone: () => setLine2Start(true),
-  });
-
-  const line2 = useTypewriter("Your people.", {
-    speed: 55,
-    start: line2Start,
-    onDone: () => setLine3Start(true),
-  });
-
-  const line3 = useTypewriter("Your vibes.", {
-    speed: 55,
-    start: line3Start,
-    onDone: () => {
-      setTaglineStart(true);
-      setDescStart(true);
-    },
-  });
-
-  const description = useTypewriter(
-    "A student-built connection platform for MITS students. Discover people, projects, events, groups and conversations beyond your classroom.",
-    { speed: 8, start: descStart }
-  );
+  const [taglineIndex, setTaglineIndex] = useState(0);
 
   async function handleAuth() {
     setLoading(true);
@@ -425,58 +283,86 @@ export default function AuthPage() {
             </div>
 
             {/* ================================================= */}
-            {/* ANIMATED HEADLINE (typewriter) */}
+            {/* ANIMATED HEADLINE */}
             {/* ================================================= */}
 
             <div className="mt-14">
 
-              <p className="mb-4 min-h-[1.2em] text-sm font-medium uppercase tracking-[0.35em] text-purple-300/70">
-                {label.displayed}
-                <Cursor show={!label.done} />
+              <p className="mb-4 text-sm font-medium uppercase tracking-[0.35em] text-purple-300/70">
+                Welcome to your campus
               </p>
 
-              <h2 className="min-h-[3.6em] text-6xl font-black leading-[0.98] xl:text-7xl">
-                {line1.displayed}
-                {!line1.done && <Cursor show />}
+              <h2 className="text-6xl font-black leading-[0.98] xl:text-7xl">
 
-                {line1.done && <br />}
+                Your campus.
 
-                {line1.done && (
-                  <motion.span
-                    animate={{
-                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                    }}
-                    transition={{
-                      duration: 6,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                    className="bg-[length:200%_auto] bg-gradient-to-r from-purple-400 via-pink-500 to-orange-400 bg-clip-text text-transparent"
-                  >
-                    {line2.displayed}
-                  </motion.span>
-                )}
-                {line1.done && !line2.done && <Cursor show />}
+                <br />
 
-                {line2.done && <br />}
+                <motion.span
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className="bg-[length:200%_auto] bg-gradient-to-r from-purple-400 via-pink-500 to-orange-400 bg-clip-text text-transparent"
+                >
+                  Your people.
+                </motion.span>
 
-                {line2.done && line3.displayed}
-                {line2.done && !line3.done && <Cursor show />}
+                <br />
+
+                Your vibes.
+
               </h2>
 
-              {/* Rotating tagline (type / pause / delete loop) */}
+              {/* Rotating tagline */}
 
               <div className="mt-7 h-8 overflow-hidden">
-                <p className="text-xl font-semibold text-white/80">
-                  <RotatingTagline words={rotatingTaglines} start={taglineStart} />
-                </p>
+
+                <AnimatePresence mode="wait">
+
+                  <motion.p
+                    key={taglineIndex}
+                    initial={{ opacity: 0, y: 25 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -25 }}
+                    transition={{ duration: 0.45 }}
+                    className="text-xl font-semibold text-white/80"
+                  >
+                    ✦ {rotatingTaglines[taglineIndex]}
+                  </motion.p>
+
+                </AnimatePresence>
+
               </div>
+
+              {/* Automatically change tagline */}
+
+              <motion.div
+                onAnimationComplete={() => {
+                  setTaglineIndex(
+                    (prev) =>
+                      (prev + 1) % rotatingTaglines.length
+                  );
+                }}
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatDelay: 0,
+                }}
+                className="hidden"
+              />
 
               {/* Description */}
 
-              <p className="mt-7 min-h-[4.5em] max-w-2xl text-lg leading-8 text-white/45">
-                {description.displayed}
-                <Cursor show={descStart && !description.done} />
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-white/45">
+                A student-built connection platform for MITS students.
+                Discover people, projects, events, groups and
+                conversations beyond your classroom.
               </p>
 
             </div>
