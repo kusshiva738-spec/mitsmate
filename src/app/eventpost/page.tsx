@@ -835,7 +835,16 @@ function PostEventModal({
             Cancel
           </button>
           <button onClick={onSubmit} disabled={submitting || uploading}
-            className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-violet-500 to-pink-500 text-white text-sm font-bold shadow-lg shadow-violet-500/30 hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2">
+            className=" shrink-0 flex items-center gap-2
+    px-5 py-2.5 rounded-2xl
+    bg-gradient-to-r from-violet-500 to-pink-500
+    text-white text-sm font-bold
+    shadow-lg shadow-violet-500/30
+    hover:opacity-90
+    hover:scale-[1.03]
+    active:scale-95
+    transition-all duration-200
+    cursor-pointer">
             {(submitting || uploading) && (
               <div className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
             )}
