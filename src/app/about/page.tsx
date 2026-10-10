@@ -213,8 +213,77 @@ export default function AboutPage() {
           <p className="mt-5 text-sm text-gray-500">
             Scan QR to contribute
           </p>
+          
 
         </div>
+
+    <section className="mt-10 rounded-[30px] border border-white/10 bg-white/[0.04] p-8 md:p-10">
+      <div className="text-center">
+        <div className="text-3xl mb-3">💌</div>
+
+        <h2 className="text-3xl font-semibold">
+          Suggestions & Reviews
+        </h2>
+
+        <p className="mt-4 max-w-xl mx-auto text-sm leading-7 text-gray-400">
+          Have an idea to improve MITS-Mate? Share your
+          suggestions, report an issue, or tell us about
+          your experience. Your feedback helps us grow.
+        </p>
+
+        <a
+          href="mailto:mitsmate@gmail.com?subject=MITS-Mate%20Suggestions%20%26%20Reviews"
+          className="inline-flex mt-6 rounded-xl bg-orange-500 px-6 py-3 font-medium text-white transition hover:bg-orange-400"
+        >
+          Send Feedback ✉️
+        </a>
+      </div>
+    </section>
+
+    {/* Join Our Team */}
+
+    <section className="mt-6 rounded-[30px] border border-purple-400/20 bg-purple-500/[0.06] p-8 md:p-10 text-center">
+      <div className="text-3xl mb-3">🚀</div>
+
+      <h2 className="text-3xl font-semibold">
+        Become a Part of Our Team
+      </h2>
+
+      <p className="mt-4 max-w-xl mx-auto text-sm leading-7 text-gray-400">
+        Want to contribute to MITS-Mate? Whether you are
+        interested in development, design, marketing, or
+        community building, we would love to hear from you.
+      </p>
+
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSe8RVqQqn_yq8-W-UXXFDmkY8XqhNsGzMtwr5yurD0G-UOl1Q/viewform?usp=preview"
+        className="inline-flex mt-6 rounded-xl border border-purple-400/40 bg-purple-500/15 px-6 py-3 font-medium transition hover:bg-purple-500/25"
+      >
+        Join the Team 🤝
+      </a>
+    </section>
+
+    {/* Instagram */}
+
+    <section className="mt-6 rounded-[24px] border border-white/10 bg-white/[0.04] p-6 text-center">
+      <h3 className="text-xl font-semibold">
+        Follow MITS-Mate 📸
+      </h3>
+
+      <p className="mt-2 text-sm text-gray-400">
+        Stay connected for updates, announcements, and campus vibes.
+      </p>
+
+      <a
+        href="https://www.instagram.com/mits.mate/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex mt-4 text-orange-300 transition hover:text-orange-200"
+      >
+        @mits.mate ↗
+      </a>
+      </section>
+        
 
         {/* Footer */}
 
