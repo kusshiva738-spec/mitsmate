@@ -124,7 +124,7 @@ const EMPTY_FORM = {
   registration_link: "", google_maps_link: "",
   contact_name: "", contact_phone: "",
 };
-
+const EVENT_DRAFT_KEY = "gwaliorhub_event_draft";
 /* ──────────────────────────────────────────────────────────────
    Page
    ────────────────────────────────────────────────────────────── */
@@ -150,6 +150,7 @@ export default function EventsPage() {
 
   // Post form
   const [form,         setForm]         = useState({ ...EMPTY_FORM });
+  const [draftLoaded, setDraftLoaded] = useState(false);
   const [posterFile,   setPosterFile]   = useState<File | null>(null);
   const [posterPreview,setPosterPreview]= useState<string>("");
   const [uploading,    setUploading]    = useState(false);
@@ -163,6 +164,32 @@ export default function EventsPage() {
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => setUserId(user?.id ?? null));
   }, []);
+  // Restore saved form draft when page opens
+useEffect(() => {
+  try {
+    const savedDraft = localStorage.getItem(EVENT_DRAFT_KEY);
+
+    if (savedDraft) {
+      const parsed = JSON.parse(savedDraft);
+      setForm({ ...EMPTY_FORM, ...parsed });
+    }
+  } catch (error) {
+    console.error("Could not restore event draft:", error);
+  } finally {
+    setDraftLoaded(true);
+  }
+}, []);
+
+// Automatically save form changes
+useEffect(() => {
+  if (!draftLoaded) return;
+
+  try {
+    localStorage.setItem(EVENT_DRAFT_KEY, JSON.stringify(form));
+  } catch (error) {
+    console.error("Could not save event draft:", error);
+  }
+}, [form, draftLoaded]);
 
   /* ── Debounce ──────────────────────────────────────────────── */
   useEffect(() => {
@@ -226,7 +253,7 @@ export default function EventsPage() {
   /* ── Post form handlers ────────────────────────────────────── */
   function openPostForm() {
     if (!userId) { router.push("/auth"); return; }
-    setForm({ ...EMPTY_FORM }); setPosterFile(null); setPosterPreview(""); setFormError("");
+     setPosterFile(null); setPosterPreview(""); setFormError("");
     setShowPostForm(true);
   }
 
@@ -280,6 +307,11 @@ export default function EventsPage() {
 
     setSubmitting(false);
     if (error) { setFormError(error.message); return; }
+// ✅ Clear draft only after successful event insertion
+localStorage.removeItem(EVENT_DRAFT_KEY);
+setForm({ ...EMPTY_FORM });
+setPosterFile(null);
+setPosterPreview("");
 
     setShowPostForm(false);
     // Reload feed
@@ -820,7 +852,7 @@ function PostEventModal({
               </FormField>
               <FormField label="Contact Phone">
                 <input value={form.contact_phone} onChange={e => field("contact_phone", e.target.value)}
-                  placeholder="+91 98765..."
+                  placeholder="98765..."
                   className="form-input" />
               </FormField>
             </div>
