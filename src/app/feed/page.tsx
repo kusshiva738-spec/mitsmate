@@ -175,6 +175,78 @@ export default function FeedPage() {
                   </div>
                 ))}
               </div>
+              
+{/* COLLEGE CLUBS COLLABORATION */}
+<section className="mb-8 overflow-hidden">
+
+  
+
+  <div className="flex items-center justify-between mb-1">
+    <h2 className="text-lg font-bold text-white">
+      Campus Communities
+    </h2>
+    <span className="text-xs text-purple-400 font-medium">
+      In Collaboration With
+    </span>
+  </div>
+
+  <p className="text-xs text-gray-400 mb-5">
+    Discover clubs and communities at MITS Gwalior.
+  </p>
+
+  <div className="relative overflow-hidden">
+
+    {/* Side fade effects */}
+    <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#0b0715] to-transparent z-10 pointer-events-none" />
+    <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#0b0715] to-transparent z-10 pointer-events-none" />
+
+    <div className="flex w-max mits-club-track">
+
+      {/* First logo sequence */}
+      <div className="flex items-center gap-8 pr-8">
+
+        {/* MITS-Mate */}
+        <a href="https://www.instagram.com/mits.mate/" className="flex flex-col items-center gap-2 min-w-[76px]">
+          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 p-[2px]">
+            <div className="w-full h-full rounded-full bg-[#171023] overflow-hidden">
+              <img
+                src="/logo.png"
+                alt="MITS-Mate"
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
+          </div>
+          <span className="text-[11px] text-white font-semibold">
+            MITS-Mate
+          </span>
+        </a>
+
+        {/* Add Yours */}
+        <a
+          href="mailto:mitsmate@gmail.com?subject=Club%20Collaboration%20-%20MITS-Mate&body=Hello%20MITS-Mate%20Team%2C%0A%0AClub%20Name%3A%0AShort%20Description%20(2-3%20lines)%3A%0AInstagram%20Handle%20 / Website%3A%0A%0APlease%20attach%20your%20official%20club%20logo%20(PNG%2FJPG)%20to%20this%20email.%0A%0AThank%20you!"
+          className="flex flex-col items-center gap-2 min-w-[80px] group"
+        >
+          <div className="w-14 h-14 rounded-full border-2 border-dashed border-purple-400 flex items-center justify-center group-hover:bg-purple-500/20 group-hover:scale-110 transition-all duration-300">
+            <span className="text-3xl text-purple-300 font-light">+</span>
+          </div>
+          <span className="text-[11px] text-purple-300 font-semibold">
+            Add Yours
+          </span>
+        </a>
+
+      </div>
+
+      
+
+    </div>
+  </div>
+
+  <p className="text-center text-[11px] text-gray-500 mt-4">
+    Your club / platform  deserves a place on MITS-Mate ✨
+  </p>
+
+</section>
+
 
               {/* ── Discover People ── */}
               <div className="min-w-0">
@@ -430,6 +502,16 @@ export default function FeedPage() {
 
         </div>
       </div>
+
+{/* MITS-MATE PROMOTIONAL BANNER */}
+<div className="flex items-center min-w-fit">
+  <img
+    src="/mitsmate-banner.png"
+    alt="MITS-Mate - Connect, Belong and Grow"
+    className="w-[260px] aspect-video object-cover rounded-xl border border-purple-500/40 shadow-lg shadow-purple-500/10"
+  />
+</div>
+
     </DashboardLayout>
   );
 }
