@@ -711,6 +711,7 @@ export default function AuthPage() {
                       ? "Enter MITS Mate →"
                       : "Create My Account →"}
                   </span>
+                  
 
                 </motion.button>
 
@@ -723,6 +724,38 @@ export default function AuthPage() {
                   <span className="text-[10px] text-white/20">
                     OR
                   </span>
+                  
+{/* SEPARATE SENIOR REGISTRATION */}
+<motion.button
+  type="button"
+  whileHover={{ scale: 1.02, y: -2 }}
+  whileTap={{ scale: 0.98 }}
+  onClick={() => router.push("/senior-register")}
+  className="mt-5 w-full rounded-2xl border-2 border-dashed border-purple-400/50 bg-gradient-to-r from-purple-500/15 via-pink-500/10 to-orange-400/10 px-4 py-4 text-left shadow-[0_0_25px_rgba(168,85,247,0.08)] transition-all duration-300 hover:border-pink-400/70 hover:shadow-[0_0_30px_rgba(168,85,247,0.18)]"
+>
+  <div className="flex items-center gap-3">
+    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-xl shadow-lg">
+      🎓
+    </div>
+
+    <div className="min-w-0 flex-1">
+      <p className="text-[10px] font-bold uppercase tracking-[2px] text-purple-300">
+        SPECIAL REGISTRATION
+      </p>
+      <p className="mt-1 text-sm font-bold text-white">
+        MITS Seniors
+      </p>
+      <p className="mt-1 text-xs text-white/55">
+        Join using your personal email & ID card
+      </p>
+    </div>
+
+    <span className="shrink-0 rounded-lg bg-purple-500/20 px-3 py-2 text-xs font-semibold text-purple-200">
+      Join →
+    </span>
+  </div>
+</motion.button>
+
 
                   <div className="h-px flex-1 bg-white/10" />
 

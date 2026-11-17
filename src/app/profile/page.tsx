@@ -404,6 +404,8 @@ export default function ProfilePage() {
               <option>CSE</option>
               <option>IT</option>
               <option>CSD</option>
+               <option>CST</option>
+                <option>CSBS</option>
                <option>CIVIL ENG.</option>
                 <option>MECH.ENG.</option>
                 <option>Electrical ENG. </option>
@@ -416,7 +418,8 @@ export default function ProfilePage() {
                       <option>AIDS</option>
                        <option>MATHEMATICS &COMP. </option>
                         <option>AUTOMOBILE </option>
-                         <option>ARCHITECTURE </option>
+                         <option>OTHER</option>
+                       
             </select>
 
                  
